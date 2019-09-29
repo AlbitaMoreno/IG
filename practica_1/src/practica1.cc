@@ -4,6 +4,8 @@
 #include <ctype.h>
 
 #include "Cube.h"
+#include "tetrahedro.h"
+#include "piramide.h"
 
 enum Modo
 {
@@ -16,7 +18,7 @@ enum Modo
 enum Figura
 {
     cubo,
-    tetraedro,
+    tetrahedro,
     piramide
 };
 
@@ -38,6 +40,8 @@ GLfloat Window_width, Window_height, Front_plane, Back_plane;
 int UI_window_pos_x = 50, UI_window_pos_y = 50, UI_window_width = 750, UI_window_height = 750;
 
 Cube cube;
+Tetrahedro tetra;
+Piramide pirami;
 
 //**************************************************************************
 //
@@ -134,6 +138,57 @@ void draw_objects()
                 break;
             }
             break;
+            // Dibujar tetraedro
+        case tetrahedro:
+            switch (mode)
+            {
+            case puntos:
+                tetra.dibuja_puntos();
+                break;
+            case aristas:
+                tetra.dibuja_alambre();
+                break;
+            case solido:
+                tetra.dibuja_solido();
+                break;
+            case ajedrez:
+                tetra.dibuja_ajedrez();
+                break;
+            case todo:
+                tetra.dibuja_puntos();
+                tetra.dibuja_alambre();
+                tetra.dibuja_solido();
+                break;
+            default:
+                break;
+            }
+            break;
+
+        // Dibujar piramide
+        case piramide:
+            switch (mode)
+            {
+            case puntos:
+                pirami.dibuja_puntos();
+                break;
+            case aristas:
+                pirami.dibuja_alambre();
+                break;
+            case solido:
+                pirami.dibuja_solido();
+                break;
+            case ajedrez:
+                pirami.dibuja_ajedrez();
+                break;
+            case todo:
+                pirami.dibuja_puntos();
+                pirami.dibuja_alambre();
+                pirami.dibuja_solido();
+                break;
+            default:
+                break;
+            }
+            break;
         default:
             cout << "Pulse una tecla para cambiar de modo" << endl;
             break;
@@ -142,7 +197,6 @@ void draw_objects()
         glEnd();
     }
 }
-
 
 void draw_scene(void)
 {
@@ -220,6 +274,12 @@ void special_keys(int Tecla1, int x, int y)
     case GLUT_KEY_F1:
         figure = cubo;
         break; // Cubo
+    case GLUT_KEY_F2:
+        figure = tetrahedro;
+        break;
+    case GLUT_KEY_F3:
+        figure = piramide;
+        break;
     case GLUT_KEY_LEFT:
         Observer_angle_y--;
         break;
