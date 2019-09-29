@@ -2,7 +2,7 @@
 #
 # nombre del fichero ejecutable
 #
-TARGETS= practica1
+TARGETS=./bin/practica1
 
 #
 GLUT_DIR=/casa/dmartin/codigo/funciontecas/freeglut
@@ -13,7 +13,7 @@ GL_DIR=/usr/X11R6
 # la opcion -g sirve para permitir la depuraci�n
 #
 CFLAGS=    -g -DXWINDOWS -DSHM -I/usr/include -I$(GLUT_DIR)/include -I.
-CXXFLAGS=  -g -DXWINDOWS -DSHM -I/usr/include -I$(GLUT_DIR)/include -I.
+CXXFLAGS=  -g -DXWINDOWS -DSHM -I/usr/include -I$(GLUT_DIR)/include -I. -I./include
 
 # banderas pra el enlazador
 # Se indica directorios donde encontrar las funciontecas con -L. Usando -l seguido del
@@ -35,14 +35,8 @@ CC = g++
 
 # como pasar de .cc a .o
 
-.cc.o:
-	$(CC) $(CXXFLAGS) -c $<
-
-# como pasar de .o a ejecutable (sin sufijo)
-
-.o:
-	$(CC) -o $@ $^ $(LDFLAGS) 
-
+obj/%.o:
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 # orden que sera ejecutada por defecto
 #
@@ -50,19 +44,20 @@ default : $(TARGETS)
 
 # regla de dependencias
 #
-$(TARGETS) : obj/o3ds.o obj/o3d.o obj/cube.o practica1.o
+$(TARGETS) : obj/o3ds.o obj/o3d.o obj/Cube.o obj/practica1.o
+	$(CC) -o $@ $^ $(LDFLAGS) 
 
 obj/practica1.o: src/practica1.cc
 
-obj/o3ds.o: src/o3ds.cc include/o3ds.h
+obj/o3ds.o: src/models/o3ds.cc include/o3ds.h
 
-obj/o3d.o: src/models/o3d.cc include/models/o3d.h
+obj/o3d.o: src/models/o3d.cc include/o3d.h
 
-obj/cube.o: src/models/Cube.cc include/models/Cube.h
+obj/Cube.o: src/models/Cube.cc include/Cube.h
 #
 #
 clean:
-	rm -f *.o
+	rm -f obj/*.o
 	rm -f $(TARGETS)
 
 #

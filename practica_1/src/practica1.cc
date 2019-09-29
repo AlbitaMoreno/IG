@@ -1,10 +1,3 @@
-//**************************************************************************
-// Práctica 1
-//
-//
-// GPL
-//**************************************************************************
-
 #include "stdlib.h"
 #include "stdio.h"
 #include <GL/glut.h>
@@ -150,9 +143,6 @@ void draw_objects()
     }
 }
 
-//**************************************************************************
-//
-//***************************************************************************
 
 void draw_scene(void)
 {
@@ -294,15 +284,6 @@ int main(int argc, char **argv)
     // se llama a la inicialización de glut
     glutInit(&argc, argv);
 
-    // se indica las caracteristicas que se desean para la visualización con OpenGL
-    // Las posibilidades son:
-    // GLUT_SIMPLE -> memoria de imagen simple
-    // GLUT_DOUBLE -> memoria de imagen doble
-    // GLUT_INDEX -> memoria de imagen con color indizado
-    // GLUT_RGB -> memoria de imagen con componentes rojo, verde y azul para cada pixel
-    // GLUT_RGBA -> memoria de imagen con componentes rojo, verde, azul y alfa para cada pixel
-    // GLUT_DEPTH -> memoria de profundidad o z-bufer
-    // GLUT_STENCIL -> memoria de estarcido
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
     // posicion de la esquina inferior izquierdad de la ventana
