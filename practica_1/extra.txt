@@ -1,0 +1,7 @@
+Adicionalmente se han añadido a la práctica los siguientes modelos:
+* tetraedro
+* piramide
+* octaedro
+
+Para poder visualizar los modelos se han usado F2, F3, F4. Siendo
+F1 el modelo del cubo.
