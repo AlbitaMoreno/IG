@@ -44,7 +44,7 @@ default : $(TARGETS)
 
 # regla de dependencias
 #
-$(TARGETS) : obj/o3ds.o obj/o3d.o obj/Cube.o obj/tetrahedro.o obj/piramide.o obj/practica1.o
+$(TARGETS) : obj/o3ds.o obj/o3d.o obj/Cube.o obj/tetraedro.o obj/piramide.o obj/octaedro.o obj/practica1.o
 	$(CC) -o $@ $^ $(LDFLAGS) 
 
 obj/practica1.o: src/practica1.cc
@@ -53,9 +53,9 @@ obj/o3ds.o: src/models/o3ds.cc include/o3ds.h
 obj/o3d.o: src/models/o3d.cc include/o3d.h
 
 obj/Cube.o: src/models/Cube.cc include/Cube.h
-obj/tetrahedro.o: src/models/tetrahedro.cc include/tetrahedro.h
-obj/piramide.o: src/models/piramide.cc include/piramide.h
-
+obj/tetraedro.o: src/models/extras/tetraedro.cc include/tetraedro.h
+obj/piramide.o: src/models/extras/piramide.cc include/piramide.h
+obj/octaedro.o: src/models/extras/octaedro.cc include/octaedro.h
 #
 #
 clean:

@@ -1,6 +1,6 @@
-#include "include/tetrahedro.h"
+#include "tetraedro.h"
 
-Tetrahedro :: Tetrahedro()
+Tetraedro :: Tetraedro()
 {
     //h = sqrt(6)/3
     vertices.push_back(_vertex3f(0.0,0.43, 0.0));   //cúspide

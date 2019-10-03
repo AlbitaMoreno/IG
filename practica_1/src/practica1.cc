@@ -4,8 +4,9 @@
 #include <ctype.h>
 
 #include "Cube.h"
-#include "tetrahedro.h"
+#include "tetraedro.h"
 #include "piramide.h"
+#include "octaedro.h"
 
 enum Modo
 {
@@ -18,8 +19,9 @@ enum Modo
 enum Figura
 {
     cubo,
-    tetrahedro,
-    piramide
+    tetraedro,
+    piramide,
+    octaedro
 };
 
 Modo mode;
@@ -40,9 +42,9 @@ GLfloat Window_width, Window_height, Front_plane, Back_plane;
 int UI_window_pos_x = 50, UI_window_pos_y = 50, UI_window_width = 750, UI_window_height = 750;
 
 Cube cube;
-Tetrahedro tetra;
+Tetraedro tetra;
 Piramide pirami;
-
+Octaedro octa;
 //**************************************************************************
 //
 //***************************************************************************
@@ -139,7 +141,7 @@ void draw_objects()
             }
             break;
             // Dibujar tetraedro
-        case tetrahedro:
+        case tetraedro:
             switch (mode)
             {
             case puntos:
@@ -184,6 +186,30 @@ void draw_objects()
                 pirami.dibuja_puntos();
                 pirami.dibuja_alambre();
                 pirami.dibuja_solido();
+                break;
+            default:
+                break;
+            }
+            break;
+        case octaedro:
+            switch (mode)
+            {
+            case puntos:
+                octa.dibuja_puntos();
+                break;
+            case aristas:
+                octa.dibuja_alambre();
+                break;
+            case solido:
+                octa.dibuja_solido();
+                break;
+            case ajedrez:
+                octa.dibuja_ajedrez();
+                break;
+            case todo:
+                octa.dibuja_puntos();
+                octa.dibuja_alambre();
+                octa.dibuja_solido();
                 break;
             default:
                 break;
@@ -275,10 +301,13 @@ void special_keys(int Tecla1, int x, int y)
         figure = cubo;
         break; // Cubo
     case GLUT_KEY_F2:
-        figure = tetrahedro;
+        figure = tetraedro;
         break;
     case GLUT_KEY_F3:
         figure = piramide;
+        break;
+    case GLUT_KEY_F4:
+        figure = octaedro;
         break;
     case GLUT_KEY_LEFT:
         Observer_angle_y--;

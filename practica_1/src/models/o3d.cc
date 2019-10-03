@@ -32,7 +32,7 @@ void O3D ::dibuja_solido()
 {
     glColor3f(0.5, 0.5, 1);
     glPolygonMode(GL_FRONT, GL_FILL);
-
+    
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < triangulos.size(); i++)
     {
