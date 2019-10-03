@@ -6,6 +6,7 @@
 #include "Cube.h"
 #include "tetrahedro.h"
 #include "piramide.h"
+#include "octaedro.h"
 
 enum Modo
 {
@@ -19,7 +20,8 @@ enum Figura
 {
     cubo,
     tetrahedro,
-    piramide
+    piramide,
+    octaedro
 };
 
 Modo mode;
@@ -42,7 +44,7 @@ int UI_window_pos_x = 50, UI_window_pos_y = 50, UI_window_width = 750, UI_window
 Cube cube;
 Tetrahedro tetra;
 Piramide pirami;
-
+Octaedro octa;
 //**************************************************************************
 //
 //***************************************************************************
@@ -189,6 +191,30 @@ void draw_objects()
                 break;
             }
             break;
+        case octaedro:
+            switch (mode)
+            {
+            case puntos:
+                octa.dibuja_puntos();
+                break;
+            case aristas:
+                octa.dibuja_alambre();
+                break;
+            case solido:
+                octa.dibuja_solido();
+                break;
+            case ajedrez:
+                octa.dibuja_ajedrez();
+                break;
+            case todo:
+                octa.dibuja_puntos();
+                octa.dibuja_alambre();
+                octa.dibuja_solido();
+                break;
+            default:
+                break;
+            }
+            break;
         default:
             cout << "Pulse una tecla para cambiar de modo" << endl;
             break;
@@ -279,6 +305,9 @@ void special_keys(int Tecla1, int x, int y)
         break;
     case GLUT_KEY_F3:
         figure = piramide;
+        break;
+    case GLUT_KEY_F4:
+        figure = octaedro;
         break;
     case GLUT_KEY_LEFT:
         Observer_angle_y--;
