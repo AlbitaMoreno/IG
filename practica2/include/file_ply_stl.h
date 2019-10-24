@@ -1,3 +1,11 @@
+//******************************************************************************
+// class to read ply files of triangles
+//
+// Domingo Martín Perandres (c) 2003-2013
+//
+// Gnu Public Licence
+//******************************************************************************
+
 #ifndef _READ_PLY
 #define _READ_PLY
 

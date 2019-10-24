@@ -1,11 +1,11 @@
 //**************************************************************************
-// Class for definng vertices
+// Class for defining vertices
 //
-// Domingo Martin Perandres 2003,2004,2005,2006,2007
+// Domingo Martin Perandres 2003-2016
 //
 // GPL3
 //
-// ultima actualizacion 20071010
+// ultima actualizacion 20130305
 //**************************************************************************
 
 
@@ -18,7 +18,6 @@
 #include <assert.h>
 #include <math.h>
 #include <iostream>
-//#include "error.h"
 
 using namespace std;
 
@@ -96,8 +95,7 @@ _vertex2 	clone(){_vertex2<Type> Vertex1(*this);return Vertex1;};
 
 
 inline 	Type &operator[](int Position){return *(&x+Position);};
-
-void show_values();
+void		show_values();
 };
 
 
@@ -175,7 +173,7 @@ _vertex3 &from_byte(_vertex3<unsigned char> &Vertex1);
 Type			compute_angle(const _vertex3<Type> &Vertex1);
 
 inline 	Type &operator[](int Position){return *(&x+Position);};
-void 	show_values();
+void		show_values();
 };
 
 
@@ -278,7 +276,6 @@ int									compute_coefficients(_vertex3<Type> Vertex1,
 
 _vertex_position		compute_vertex_position(_vertex3<Type> Vertex1);
 _vertex3<Type>			normal();
-void				show_values();
 };
 
 
@@ -646,16 +643,16 @@ return(*this);
 }
 
 //*************************************************************************
-// 030322
+//
 //*************************************************************************
-
 
 template <class Type> void
 _vertex2<Type>::show_values()
 {
 
-	cout << "x=" << x << " y=" << y << endl;
+    cout << "vertex: x=" << x << " y=" << y << endl;
 }
+
 
 //*************************************************************************
 // 030322
@@ -1128,15 +1125,14 @@ return (atan2(sine,cosine));
 
 
 //*************************************************************************
-// 030322
+//
 //*************************************************************************
-
 
 template <class Type> void
 _vertex3<Type>::show_values()
 {
 
-	cout << "x=" << x << " y=" << y << " z=" << z << endl;
+    std::cout << "vertex: x=" << x << " y=" << y << " z=" << z << endl;
 }
 
 
@@ -1149,7 +1145,7 @@ _vertex3<Type>::show_values()
 
 template <class Type> _vertex4<Type>::_vertex4(Type x1,Type y1,Type z1,Type w1)
 {
-  
+
 x=x1;
 y=y1;
 z=z1;
@@ -1569,15 +1565,14 @@ return(*this);
 }
 
 //*************************************************************************
-// 030322
+// especialization
 //*************************************************************************
-
 
 template <class Type> void
 _vertex4<Type>::show_values()
 {
 
-	cout << "x=" << x << " y=" << y << " z=" << z << " w=" << w << endl;
+std::cout << "vertex: x=" << x << " y=" << y << " z=" << z << " w=" << w <<endl;
 }
 
 
@@ -1687,24 +1682,6 @@ Normal1.y=this->y;
 Normal1.z=this->z;
 return(Normal1);
 }
-
-//*************************************************************************
-// especializations
-//*************************************************************************
-
-// template <> inline void
-// _plane<float>::show_values()
-// {
-// 
-// printf("plane: x=%f y=%f z=%f w=%f\n",x,y,z,w);
-// }
-// 
-// template <> inline void
-// _plane<double>::show_values()
-// {
-// 
-// printf("plane: x=%lf y=%lf z=%lf w=%lf\n",x,y,z,w);
-// }
 
 
 //*************************************************************************

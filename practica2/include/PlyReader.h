@@ -2,7 +2,7 @@
 #define PLYREADER_H
 
 #include "file_ply_stl.h"
-#include "o3dr.h"
+#include "O3DR.h"
 
 class PlyReader : public O3DR{
 public:

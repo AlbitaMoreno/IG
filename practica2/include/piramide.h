@@ -1,12 +1,6 @@
-#ifndef PIRAMIDE_H
-#define PIRAMIDE_H
+#include "O3DR.h"
 
-#include "o3d.h"
-
-class Piramide : public O3D
-{
+class Piramide : public O3DR{
 public:
-    Piramide();
+	Piramide();
 };
-
-#endif // PIRAMIDE_H

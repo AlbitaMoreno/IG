@@ -1,11 +1,7 @@
-#ifndef tetraedro_H
-#define tetraedro_H
+#include "O3D.h"
 
-#include <o3d.h>
 
-class Tetraedro : public O3D {
+class Tetraedro: public O3D{
 public:
-    Tetraedro();
+	Tetraedro();
 };
-
-#endif // tetraedro_H
